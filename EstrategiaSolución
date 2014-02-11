@@ -17,12 +17,7 @@ Requisitos de la aplicación
  -- Enviar el score a un servidor en internet (o local para hacer pruebas)
  -- Bajar del servidor los mejores 10 scores.
  -- 
- + Requisitos de la aplicación
- +Realizar una aplicación que despliegue un jueguito (cualquier juego, incluso puede adaptar a Android uno que ya esté hecho).
- +Salvar localmente el score en el juego (nombre del jugador, puntaje y fecha)
- +Enviar el score a un servidor en internet (o local para hacer pruebas)
- +Bajar del servidor los mejores 10 scores.
- +
+
  
  Escriba sus Aportes!!!
  
