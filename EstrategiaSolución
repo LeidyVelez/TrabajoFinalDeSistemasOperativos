@@ -31,3 +31,24 @@ a trabajar, ya nos va como cogiendo la tarde. -Camilo-
 
 Mi opinion es que lo mas rapido posible analizemos el juego (ahorcadito) que esta propuesto y lo adaptemos a lo que
 necesitamos ya que no podriamos ahorrar mucho tiempo de trabajo con este juego que ya esta realizado. -Alejandro Yerena
+
+
+TRABAJO!!!
+
+Bueno ya monte el trabajo, antes de hacer algo primero que todos lo miren y se famialiaricen con la aplicacion , los otros 
+que no respondieron supongo que estan deacuerdo, para verla funcionar corran el codigo servidor primero como una aplicacion
+java, luego de esto tiene que corre la otra aplicacion como andriod apilcation.
+tienen que poner la ip de sus pcs en la aplicacion android para que les corra el juego
+
+bueno como somos 6 nose como hacer para repartirnos los trabajo pondre algunas cosas que faltan:
+1)metodo que dependiendo de los errores y aciertos en la de las letras que se elijan se saque un score
+2)salvar localmente ese score que devuelve esta funcion
+3)mandar y almacenar ese score con el nombre del jugador y el score
+4)implementar interface que le pregunte al usuario el nombre al finalizar el juego para guardar su score
+5)metodo en la interface principal (por medio de un boton), que saque los datos del servidor que estan almacenados
+y mostrarlos en una lista
+
+dejare estos puntos por ahora si alguno tiene una sujerencia de esto, o no entiende el codigo o no le corre
+mandeme un correo o copielo por aca, porahora pongan debajo de esto lo que quieran hacer pa ir asignando tareas 
+y que cada uno se encargue de una parte y la vaya haciendo y la intentemos acoplar, esten mirando siempre
+el github por si no les envia notificiaciones mejor esten mirandolo  --Luis
