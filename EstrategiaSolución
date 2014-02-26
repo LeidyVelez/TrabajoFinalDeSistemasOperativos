@@ -84,3 +84,12 @@ Yo hago el punto 2  -- Victor
 PREGUNTA
 Punto 5 seria codificar un boton que cuando se presione, muestre los usuarios y sus respectivos scores?
 si es asi hago el punto 5, si no me pueden explicar que toca hacer -- Alejandro
+
+-------------------------------------------------------------------------------------------------------------
+
+si lo que aria el boton, es pedirle al servidor que le mande la lista de solo los 10 primeros con mayor score, 
+y seria mostrar por pantalla esos 10 score, el boton debe ir en la interface donde sale el juego
+ya luego de ingresar la ip, lo pones debajo del juego o en un menu q al darle clic ya que vos cuando te conectaste
+esos 10 primero puntos los sacaste del server solo los mostrar, mientras elq hace el punto de guardar el score
+en el server, hace q muestre 10 puntajes q vos definas, ya luego mostramos losq el servidor le mande, nose si me 
+hice entender--- luis
