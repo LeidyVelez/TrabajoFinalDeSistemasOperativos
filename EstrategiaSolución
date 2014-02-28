@@ -95,3 +95,10 @@ en el server, hace q muestre 10 puntajes q vos definas, ya luego mostramos losq 
 hice entender--- luis
 <Jairo> Pues yo elijo el punto 3... Me toca entonces enviar y guardar la información en el servidor o estoy equivocado
 </Jairo>
+
+
+si jairo, por ahora mientras podes mandar un string q vos definas desde la aplicacion andrioid mandarla usando esta 
+funcion mandar mensaje, luego deq la mandes, tenes q mirar como guardar en la pc ese puntaje y ya verificiar q el servidor
+si este guardando bn ese string, ya luego de que tengas eso, cuando tengas el score, y el nombre del jugador
+solo es mandar esos 2 parametros y guardarlos, eso del manejo de base de datos en java es un poco maluquito, no se
+si mejor omitir el paso de guardarlo localmente (el punto 2) y que entre uds dos hagan el guardado de los datos--luis
