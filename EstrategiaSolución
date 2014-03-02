@@ -102,3 +102,9 @@ funcion mandar mensaje, luego deq la mandes, tenes q mirar como guardar en la pc
 si este guardando bn ese string, ya luego de que tengas eso, cuando tengas el score, y el nombre del jugador
 solo es mandar esos 2 parametros y guardarlos, eso del manejo de base de datos en java es un poco maluquito, no se
 si mejor omitir el paso de guardarlo localmente (el punto 2) y que entre uds dos hagan el guardado de los datos--luis
+
+----------------------------------------
+
+no entiendo como hacer el punto 2, es poner un label que muestre el score que tiene actualmente el jugador o que? -- Victor
+
+------------------------------------
