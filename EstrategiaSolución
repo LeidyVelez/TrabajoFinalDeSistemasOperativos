@@ -113,3 +113,5 @@ como le decía  a jairo, el punto 2 yo no lo veo tan necesario, mas bn tu victor
 localmente sino cojer el score que saca la funcion de leidy y el nombre dela interface de camilo y esos 2 datos guardarlo 
 en una bd en el servidor,  podes ir empezando mirando como guardar datos desde java en una bd y ya luego de que guarde algo
 ya si encargarnos de guardar lo que mande el cliente---luis
+
+y como asi que un servidor, donde esta el servidor o te refieres al paquete servidor de la aplicacion -- Victor
