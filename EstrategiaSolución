@@ -117,3 +117,11 @@ ya si encargarnos de guardar lo que mande el cliente---luis
 ---------------------------------------
 y como asi que un servidor, donde esta el servidor o te refieres al paquete servidor de la aplicacion
 y como hago un commit cuando me bajo el git a eclipse    -- Victor
+
+--------------------------------------------------------------------------------
+
+si primero mira el codigo que esta aca montado para que me entendas, uno sirve como servidor y el otro como cliente
+mas arriba lo explico, cuando vos clonas este repositorio a vos en una carpeta en tu pc te queda guardado, vos
+importas tanto el servidor como el cliente a eclipse, cuando modifiques algo del cofigo le das guardar, luego
+entras al github de esritorio te metes al proyecto,le das syncronizar , esperas un rato y ya luego cuendo termine
+le mandas comit con una descripcion de loq se cambio --- luis
