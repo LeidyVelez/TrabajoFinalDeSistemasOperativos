@@ -135,3 +135,10 @@ se que desde eclipse se puede pero no supe como, ya si te toca buscar como, yose
 desde la pagina--luis
 ---------------------------------
 yo creo que el punto 2 si es necesario porque el jugador necesita ver su puntaje -- Victor
+
+-------------------------------------------
+
+si mira esq la idea esq la funcion q saca el score se ejecute alfinal y en la interface final esa funcion arroja un
+numero q se mostrara en esta interface la cual le pedira el nombre, ya con el nombre y ese numero de score, es donde se 
+tiene que guardar en el servidor para cuando el le de en el boton rankin, el saq los datos del servidor y los muestre--luis
+
