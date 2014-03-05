@@ -110,7 +110,7 @@ public class Sockettest extends Activity {
 	public boolean Connect() {
 		//Obtengo datos ingresados en campos
 		String IP = ipinput.getText().toString();
-		int PORT = 5555;
+		int PORT = 5556;
 
 		try {//creamos sockets con los valores anteriores
 			miCliente = new Socket(IP, PORT);

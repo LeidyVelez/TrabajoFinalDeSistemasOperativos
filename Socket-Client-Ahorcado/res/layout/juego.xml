@@ -6,6 +6,22 @@
     android:layout_marginTop="10dp"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textViewScore1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ImageView
         android:id="@+id/imgview"
         android:layout_width="fill_parent"
@@ -27,18 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="0dp"
         android:layout_marginTop="20dp"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:ems="10" />
 
     <Button
         android:id="@+id/buttonenviar"

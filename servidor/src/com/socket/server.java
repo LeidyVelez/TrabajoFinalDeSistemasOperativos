@@ -15,7 +15,7 @@ public class server {
 	Socket skCliente;
 	ServerSocket skServidor;
 	String datareceived, substring1, substring2;
-	final int PUERTO = 5555;// Puerto que utilizara el servidor utilizar este
+	final int PUERTO = 5556;// Puerto que utilizara el servidor utilizar este
 							// mismo en el cliente
 	String IP_client;
 	Mensaje_data mdata = null;

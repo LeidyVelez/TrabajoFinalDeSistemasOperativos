@@ -19,10 +19,10 @@ import android.widget.Toast;
 
 public class juego extends Activity {
 	private Button enviar;
-	private TextView texto , tag;
+	private TextView texto , tag, score1, score2, score3;
 	private EditText letraingr;
 	private ImageView img;
-	private int i=1;
+	private int i=1, puntaje = 0;
     private boolean letra=true,ganar=false;
     private String ejemplo,palmostrar="", Ptag;
 	@Override
@@ -37,7 +37,8 @@ public class juego extends Activity {
 		tag = (TextView) findViewById(R.id.textView2);
 		letraingr= (EditText) findViewById(R.id.editText1);
 		enviar=(Button) findViewById(R.id.buttonenviar);	
-		
+		score1 = (TextView) findViewById(R.id.textViewScore1);
+		score1.setText("Score: " + puntaje);
 		//recibir datos	 
 		 generarpalabra();
 		 texto.setText(palmostrar);
@@ -68,9 +69,12 @@ public class juego extends Activity {
 				  if(i==8){
 					  //fin juego
 					  setContentView(R.layout.perdio);
+					  score3 = (TextView) findViewById(R.id.textViewScore3);
+					  score3.setText("Score: " + puntaje);
 				  }
 				}
 				letraingr.setText("");
+				score1.setText("Score: " + puntaje);
 			}
 		});
 		
@@ -138,6 +142,8 @@ public class juego extends Activity {
 		//si nunca leyo el caracter "_" la variable seguira verdadera por lo tanto gano
 		if (gano){
 			setContentView(R.layout.gano);
+			score2 = (TextView) findViewById(R.id.textViewScore2);
+			score2.setText("Score: " + puntaje);
 		}
 		return ;
 	}

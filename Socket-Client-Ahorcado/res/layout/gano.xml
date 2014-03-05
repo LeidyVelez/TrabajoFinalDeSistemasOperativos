@@ -15,4 +15,13 @@
         android:textColor="#000000"
         android:textSize="100dp" />
 
+    <TextView
+        android:id="@+id/textViewScore2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </LinearLayout>
