@@ -1,6 +1,6 @@
 package com.socket;
 
-
+//laj<shj<hflzsjdhfdsjfhv
 
 import com.socket.R;
 import com.socket.R.drawable;
@@ -36,10 +36,10 @@ public class juego extends Activity {
 		texto = (TextView) findViewById(R.id.textView1);
 		tag = (TextView) findViewById(R.id.textView2);
 		letraingr= (EditText) findViewById(R.id.editText1);
-		enviar=(Button) findViewById(R.id.buttonenviar);	
+		enviar=(Button) findViewById(R.id.buttonenviar);
 		score1 = (TextView) findViewById(R.id.textViewScore1);
 		score1.setText("Score: " + puntaje);
-		//recibir datos	 
+		//recibir datos
 		 generarpalabra();
 		 texto.setText(palmostrar);
 		 tag.setText(Ptag);
@@ -51,7 +51,7 @@ public class juego extends Activity {
 				//comprobar si el caracter existe en la palabra
 				letra=comprobarletra(caracter[0]);
 				if(letra){
-					
+
 			       //ingresa la cadena que le envia el server
 					palmostrar=formAhorcadito(caracter[0]);
 					texto.setText(palmostrar);
@@ -62,7 +62,7 @@ public class juego extends Activity {
 			    //si no esta aumenta la imagen
 		        i++;
 				String s = Integer.toString(i);
-				int resID = getResources().getIdentifier("ahor"+s, "drawable", "com.socket"); 
+				int resID = getResources().getIdentifier("ahor"+s, "drawable", "com.socket");
 				img.setImageResource(resID);
 				letra=true;
 				  //si esta es la ultima imagen
@@ -77,7 +77,7 @@ public class juego extends Activity {
 				score1.setText("Score: " + puntaje);
 			}
 		});
-		
+
 	}
 
 
@@ -85,7 +85,7 @@ public class juego extends Activity {
 	public boolean comprobarletra(char caracter) {
 		boolean encontrado=false;
 		//CODIGO DE SERVER
-		
+
            for(int i =0;i<ejemplo.length();i++){
         	   if(ejemplo.charAt(i)==caracter){
         		   encontrado=true;
@@ -95,13 +95,13 @@ public class juego extends Activity {
 		return encontrado;
 	}
 	//funcion para recuperar la cadena que se le mostrara al cliente
-	public String formAhorcadito(char caracter) {	
+	public String formAhorcadito(char caracter) {
 		 //CODIGOSERVER
         String palabra=palmostrar;
         String palaux="",palsalida="";
-       
-          
-          for(int i=0;i<ejemplo.length();i++){			
+
+
+          for(int i=0;i<ejemplo.length();i++){
   			if(ejemplo.charAt(i)==caracter){
   				palaux=palaux+caracter+" ";
   			}else{
@@ -109,7 +109,7 @@ public class juego extends Activity {
   			}
   		   }
           //genero la nueva palabra a mostrar
-          for(int i=0;i<palaux.length();i++){	
+          for(int i=0;i<palaux.length();i++){
         	   //miro si ambas tienen en comun el caracter para ponerlo igual
     			if(palabra.charAt(i)==palaux.charAt(i)){
     				palsalida=palsalida+palabra.charAt(i);
@@ -119,10 +119,10 @@ public class juego extends Activity {
     				  palsalida=palsalida+palaux.charAt(i);
     			  }
     				  else{
-    					  palsalida=palsalida+palabra.charAt(i);  
+    					  palsalida=palsalida+palabra.charAt(i);
     				  }
     			  }
-    			
+
           }
         //CODIGOSERVER fin
         palabra=palsalida;
@@ -132,9 +132,9 @@ public class juego extends Activity {
 	public void gano(String text) {
         //recorrer texto
 		boolean gano=true;
-		
+
 		for(int i=0;i<text.length();i++){
-			
+
 			if(text.charAt(i)=='_'){
 				gano=false;
 			}
@@ -150,23 +150,23 @@ public class juego extends Activity {
 	public void generarpalabra() {
 		//CODIGOSERVER
         int num=ejemplo.length();
-        
+
         for (int i=0;i<num;i++){
-        	
+
         	if(ejemplo.substring(i,i+1).equals(" "))
         	{
         		 palmostrar=palmostrar+"  ";
         	}
         	else
         	{
-        		
+
         		 palmostrar=palmostrar+"_ ";
         	}
-        		
-        	
-        	
+
+
+
         }
 		return ;
 	}
-	
+
 }
