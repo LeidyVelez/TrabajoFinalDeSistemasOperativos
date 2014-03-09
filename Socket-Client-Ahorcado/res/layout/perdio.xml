@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cc0000"
+    android:background="@drawable/ahorcado"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="75dp"
+        android:layout_width="240dp"
+        android:layout_height="170dp"
+        android:layout_marginLeft="65dp"
         android:layout_marginTop="200dp"
-        android:text="PERDIO"
+        android:text="@string/perder"
         android:textColor="#000000"
         android:textSize="50dp" />
 
@@ -22,5 +22,19 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <Button
+        android:id="@+id/buttonVolverJugar"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="50dp"
+        android:text="@string/volver"
+        android:textColor="#ffffff"
+		android:background="#000000"
+		android:onClick="volverJugar">
+        
+        </Button>
+    
 
 </LinearLayout>
