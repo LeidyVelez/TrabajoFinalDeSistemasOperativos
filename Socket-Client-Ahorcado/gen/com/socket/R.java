@@ -19,29 +19,31 @@ public final class R {
         public static final int ahor6=0x7f020005;
         public static final int ahor7=0x7f020006;
         public static final int ahor8=0x7f020007;
-        public static final int icon=0x7f020008;
-        public static final int off=0x7f020009;
-        public static final int on=0x7f02000a;
-        public static final int warn=0x7f02000b;
+        public static final int ahorcado=0x7f020008;
+        public static final int icon=0x7f020009;
+        public static final int off=0x7f02000a;
+        public static final int on=0x7f02000b;
+        public static final int warn=0x7f02000c;
     }
     public static final class id {
-        public static final int btcnt=0x7f05000d;
-        public static final int bts=0x7f05000f;
-        public static final int buttonenviar=0x7f050006;
-        public static final int conneytlay=0x7f05000c;
-        public static final int editText1=0x7f050005;
-        public static final int gralayout=0x7f050007;
-        public static final int imgview=0x7f050004;
-        public static final int ipinput=0x7f05000a;
-        public static final int iplayout=0x7f050008;
-        public static final int layout_txt=0x7f05000e;
-        public static final int portlayout=0x7f05000b;
+        public static final int btcnt=0x7f05000e;
+        public static final int bts=0x7f050010;
+        public static final int buttonVolver=0x7f050004;
+        public static final int buttonenviar=0x7f050007;
+        public static final int conneytlay=0x7f05000d;
+        public static final int editText1=0x7f050003;
+        public static final int gralayout=0x7f050008;
+        public static final int imgview=0x7f050006;
+        public static final int ipinput=0x7f05000b;
+        public static final int iplayout=0x7f050009;
+        public static final int layout_txt=0x7f05000f;
+        public static final int portlayout=0x7f05000c;
         public static final int textView1=0x7f050000;
-        public static final int textView2=0x7f050003;
-        public static final int textViewScore1=0x7f050002;
+        public static final int textView2=0x7f050002;
+        public static final int textViewScore1=0x7f050005;
         public static final int textViewScore2=0x7f050001;
-        public static final int textViewScore3=0x7f050010;
-        public static final int txtip=0x7f050009;
+        public static final int textViewScore3=0x7f050011;
+        public static final int txtip=0x7f05000a;
     }
     public static final class layout {
         public static final int gano=0x7f030000;
@@ -52,5 +54,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040001;
         public static final int hello=0x7f040000;
+        public static final int perder=0x7f040002;
+        public static final int volver=0x7f040003;
     }
 }
