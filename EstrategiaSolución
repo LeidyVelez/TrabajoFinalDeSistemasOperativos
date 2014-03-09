@@ -142,3 +142,7 @@ si mira esq la idea esq la funcion q saca el score se ejecute alfinal y en la in
 numero q se mostrara en esta interface la cual le pedira el nombre, ya con el nombre y ese numero de score, es donde se 
 tiene que guardar en el servidor para cuando el le de en el boton rankin, el saq los datos del servidor y los muestre--luis
 
+---------------------------------------
+yo tengo pensado pues para el punto 5 que es el que me toca codificar un boton llamado ranking que me muestre los datos
+de los 10 score mas altos en un pop up. Pero como tal necesitaria realizar las pruebas y mirar por donde meterme
+cuando ya este almacenada esta info en el servidor para poder realizar pruebas y codificar el boton
