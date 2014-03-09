@@ -139,14 +139,14 @@ public class server {
 		
     public String[][] GenerarDiccionario()
     {   
-    	Diccionario [0][0] = "Peliculas";
+    	Diccionario [0][0] = "PELICULAS";
     	 Diccionario[0][1] = "tron";
     	 Diccionario[0][2] = "seven";
     	 Diccionario[0][3] = "el padrino";
     	 Diccionario[0][4] = "la naranja mecanica";
     	 Diccionario[0][5] = "el club de la pelea";
     	   
-    	Diccionario [1][0] =  "Series en inglés";
+    	Diccionario [1][0] =  "SERIES EN INGLES";
     	  Diccionario[1][1] = "game of thrones";
     	  Diccionario[1][2] = "the walking dead";
     	  Diccionario[1][3] = "prison break";
@@ -154,7 +154,7 @@ public class server {
     	  Diccionario[1][5] = "the big bang theory";
     	
     	
-    	Diccionario [2][0] = "libros";
+    	Diccionario [2][0] = "LIBROS";
     	  Diccionario[2][1] = "los reyes malditos";
     	  Diccionario[2][2] = "dracula";
     	  Diccionario[2][3] = "el ocaso de los dioses";
@@ -164,7 +164,7 @@ public class server {
      	return Diccionario;
     	
     }
-	// en base al codigo de accion recibido realizaremos una accion
+	// Con base en el código recibido se realiza la acción 
 	
 	public static void main(String[] args) {
 		new server();
