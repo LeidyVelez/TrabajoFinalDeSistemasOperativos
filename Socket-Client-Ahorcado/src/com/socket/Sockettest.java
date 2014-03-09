@@ -56,7 +56,7 @@ public class Sockettest extends Activity {
 				//si nos pudimos conectar
 				if (conectstatus) {//mostramos mensaje 
 					
-					Toast.makeText(getApplicationContext(), "conecto",
+					Toast.makeText(getApplicationContext(), "Usted se ha conectado",
 							Toast.LENGTH_SHORT).show();
 					//juego j=new juego();
 					
@@ -90,7 +90,7 @@ public class Sockettest extends Activity {
 			        startActivity(i);
 			 
 				} else {//error al conectarse 
-					Toast.makeText(getApplicationContext(), "no conecto",
+					Toast.makeText(getApplicationContext(), "No se ha podido establecer conexión",
 							Toast.LENGTH_SHORT).show();
 			   }
 				
