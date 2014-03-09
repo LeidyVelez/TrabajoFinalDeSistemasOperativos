@@ -22,7 +22,7 @@ public class juego extends Activity {
 	private TextView texto , tag, score1, score2, score3;
 	private EditText letraingr;
 	private ImageView img;
-	private int i=1, puntaje = 0;
+	private int i=1, puntaje = 0, score=0;
     private boolean letra=true,ganar=false;
     private String ejemplo,palmostrar="", Ptag;
 	@Override
@@ -52,7 +52,7 @@ public class juego extends Activity {
 				//comprobar si el caracter existe en la palabra
 				letra=comprobarletra(caracter[0]);
 				if(letra){
-					
+					score= calcularScore(true);	
 			       //ingresa la cadena que le envia el server
 					palmostrar=formAhorcadito(caracter[0]);
 					texto.setText(palmostrar);
@@ -60,6 +60,7 @@ public class juego extends Activity {
 					gano(palmostrar);
 				}
 				else{
+						score= calcularScore(true);
 			    //si no esta aumenta la imagen
 		        i++;
 				String s = Integer.toString(i);
@@ -84,6 +85,21 @@ public class juego extends Activity {
 				
 			
 			
+			}
+			
+			
+			
+			private int calcularScore(boolean opcion) {
+				
+				if((!(puntaje<0)) && (opcion)){
+					puntaje+=100;
+			}if(!(opcion)){
+				puntaje-=50;
+				
+			}if(opcion==false & (puntaje<0)){
+				return puntaje=0;
+			}
+			return puntaje;
 			}
 		});
 		
