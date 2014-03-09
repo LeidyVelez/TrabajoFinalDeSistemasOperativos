@@ -77,18 +77,8 @@ public class juego extends Activity {
 				}
 				letraingr.setText("");
 				score1.setText("Score: " + puntaje);
-			}
-		});
-		
-		ranking.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				
-			
 			
 			}
-			
-			
-			
 			private int calcularScore(boolean opcion) {
 				
 				if((!(puntaje<0)) && (opcion)){
@@ -101,6 +91,16 @@ public class juego extends Activity {
 			}
 			return puntaje;
 			}
+		});
+		
+		ranking.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				
+			
+			
+			}
+			
+		
 		});
 		
 	}
