@@ -17,11 +17,12 @@ public class server {
 	String datareceived, substring1, substring2;
 	final int PUERTO = 5556;// Puerto que utilizara el servidor utilizar este
 							// mismo en el cliente
-	String IP_client;
+	String IP_client, IP_clientAfter;
 	Mensaje_data mdata = null;
 	ObjectOutputStream oos;
 	String TimeStamp,palabra="hola";
 	int NumPal, NumCat;
+	String jugadores[][] = new String [100][2];
 	String Diccionario[][] = new String [3][6];
 
 	server() {
@@ -33,9 +34,10 @@ public class server {
 			skServidor = new ServerSocket(PUERTO);
 			System.out.println("Escuchando el puerto " + PUERTO);
 			System.out.println("En Espera....");
-            while(true){
 			TimeStamp = new java.util.Date().toString();
-
+						
+            while(true){
+			
 			try {
 				// Creamos socket para manejar conexion con cliente
 				skCliente = skServidor.accept(); // esperamos al cliente
@@ -69,26 +71,108 @@ public class server {
                     }
 					// cerramos cliente
 
-		                    skCliente.close();
-							ois.close();
-							System.out
-									.println("["
-											+ TimeStamp
-											+ "] Last_msg detected Conexion cerrada, gracias vuelva pronto");
-							break;
-
+					ois.close();
+					skCliente.close();
+					System.out.println("["+ TimeStamp+ "] Conexion cerrada, esperando actualización...");
+					break;
 					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("[" + TimeStamp + "] Error ");
+				}
+			
+			// Esperamos hasta la nueva conección con el cliente
+			skCliente = skServidor.accept(); // esperamos al cliente
+			// una vez q se conecto obtenemos la ip
+			IP_clientAfter = skCliente.getInetAddress().toString();
+			System.out.println("[" + TimeStamp + "] Conectado al cliente "
+					+ "IP:" + IP_client);
+			//comprobamos que sea la misma IP anterior para proceder a guardar, si no es así significa que el cliente
+			//se está conectando por primera vez y el proceso a realizar es el de arriba.
+			//es una prevención para un caso hipotético de varias conexiones a la vez
+			try{
+				if(IP_clientAfter.equals(IP_client)){
 				
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("[" + TimeStamp + "] Error ");
+					System.out.println("[" + TimeStamp + "]" + " guardando/actualizando nick y score...");
+					//procedemos a revisar y guardar la información que envía el cliente
+					// Manejamos flujo de Entrada
+					ObjectInputStream ois = new ObjectInputStream(skCliente.getInputStream());
+					// Cremos un Objeto con lo recibido del cliente
+					Object aux = ois.readObject();// leemos objeto
+	            
+					if (aux instanceof Mensaje_data){
+					
+						mdata = (Mensaje_data) aux;
+						guardarInfoJugador(mdata.tags, mdata.texto);				
+	            	}
+					//	cerramos la conexión
+					ois.close();
+					skCliente.close();
+					System.out.println("["+ TimeStamp+ "] Datos guardados y actualizados, sigue superándote");
+				}
+            }catch (EOFException e) {
+				//e.printStackTrace();
+				System.out.println("[" + TimeStamp + "] Desconexión inesperada...");
+				return;
 			}
-           }
+			//prueba para revisar los jugadores guardados
+			mostrarJugadores();
+			//fin prueba
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("[" + TimeStamp + "] Error 1");
 		}
 		
+	}
+	
+	//guardamos el nick y el puntaje en el arreglo de jugadores
+	public void guardarInfoJugador(String nick, String puntaje){
+		for(int i = 0; i < jugadores.length; i++){	//mientras menos que el límite que puede almacenar el servidor
+			if(jugadores[i][0]== null){		//si está vacío el espacio guarde el jugador
+				jugadores[i][0] = nick;
+				jugadores[i][1] = puntaje;
+				break;
+			}else{	//si no está vacío
+				if(jugadores[i][0].equalsIgnoreCase(nick)){		//si tiene el mismo nombre
+					if(Integer.parseInt(jugadores[i][1]) < Integer.parseInt(puntaje)){	//guarde sólo si esl puntaje es mayor
+						jugadores[i][1] = puntaje;
+						break;
+					}
+				}
+			}
+		}
+	}
+	
+	//muestra los jugadores es un método de prueba
+	public void mostrarJugadores(){
+		for(int i = 0; i < jugadores.length; i++){
+			if(jugadores[i][0]!=null){
+				System.out.println("Jugador N°: " + (i+1) +" " + jugadores[i][0] + " con puntaje " + jugadores[i][1]);
+			}
+		}
+	}
+	
+	//retorna jugador, posición es la posición en la que está guardado en jugador, offset 0 si es para retornar el nick
+	//offset 1 si es para retornar el puntaje
+	//la función retorna NULL en caso de que se pida una posición o un offset fuera del rango
+	//método para formar el mensaje_data para retornar el jugador completo
+	public String retornarJugador(String posicion, String offset){
+		if(Integer.parseInt(posicion) <= jugadores.length && (offset == "0" || offset == "0")){
+			return jugadores[Integer.parseInt(posicion)][Integer.parseInt(offset)];
+		}
+		return null;
+	}
+	
+	//método para retornar el mensaje_data con una posición ingresada
+	//se puede usar el método Snd_txt_Msg en vez de este
+	public Mensaje_data retornarMsgJugador(String posicion){
+		Mensaje_data msgJugador = new Mensaje_data();
+		msgJugador.tags = retornarJugador(posicion, "0");	//ingresa el nick como tags
+		msgJugador.texto = retornarJugador(posicion, "1");	//ingresa el puntaje en el campo texto
+		msgJugador.Action = -1;
+		msgJugador.last_msg = false;
+		return msgJugador;
 	}
 	
 	public void Snd_txt_Msg(String txt, String label) {
@@ -170,4 +254,4 @@ public class server {
 		new server();
 	}
 	
-}	
+}

@@ -17,6 +17,7 @@ public class Gano extends Activity {
 	private String puntaje, IP;
 	String nickEnviar;
 	private Bundle recibir;
+	public int OK_RESULT_CODE = 13;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,14 @@ public class Gano extends Activity {
 			public void onClick(View v) {
 				//AQUI SE GUARDA EL NICK INGRESADO
 				nickEnviar = nick.getText().toString();
-				Intent i = new Intent(Gano.this, Sockettest.class);
-				i.putExtra("ip", IP);
-				startActivity(i);
+				Toast.makeText(getApplicationContext(),nickEnviar,Toast.LENGTH_SHORT).show();
+				//retornamos el nick del jugador y su puntaje! al juego
+				Intent intent = new Intent();
+			    intent.putExtra("nick", nickEnviar);
+			    intent.putExtra("score", puntaje);
+			    //el resultado de esta actividad será el nick y el puntaje con código de resultado'13'
+			    setResult(RESULT_OK, intent);
+			    finish();
 				
 			}
 		});

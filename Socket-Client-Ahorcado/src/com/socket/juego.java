@@ -17,7 +17,7 @@ public class juego extends Activity {
 	private TextView texto, tag, score1;
 	private EditText letraingr;
 	private ImageView img;
-	private int i=1, puntaje = 0, score=0;
+	private int i=1, puntaje = 0, score=0,REQUEST_CODE = 13;
 	private boolean letra = true;
 	private String ejemplo, palmostrar = "", Ptag, punt, IP;
 
@@ -78,6 +78,19 @@ public class juego extends Activity {
 			}
 		});
 	}
+	//método para capturar los datos recibidos desde la otra actividad creada
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // TODO Auto-generated method stub
+	    if ((requestCode == REQUEST_CODE) && (resultCode == RESULT_OK)){
+	    	
+			setResult(RESULT_OK, data);
+		    finish();
+			
+	    	//Toast.makeText(getApplicationContext(), "El nick juego es "+data.getStringExtra("nick")+ " y" +
+	        		//" su puntaje juego es "+ data.getStringExtra("score"),
+					//Toast.LENGTH_SHORT).show();
+	    }
+	}
 
 	// funcion para saber si dentro de la palabra esta el caracter
 	public boolean comprobarletra(char caracter) {
@@ -136,17 +149,24 @@ public class juego extends Activity {
 
 			if (text.charAt(i) == '_') {
 				gano = false;
+				break;
 			}
 		}
 		// si nunca leyo el caracter "_" la variable seguira verdadera por lo
 		// tanto gano
 		if (gano) {
+			/*setContentView(R.layout.gano);
+			score2 = (TextView) findViewById(R.id.textViewScore2);
+			score2.setText("Score: " + puntaje);*/
 			Intent i = new Intent(juego.this, Gano.class);
 			punt = Integer.toString(puntaje);
 			i.putExtra("score", punt);
-			i.putExtra("ip", IP);
-			startActivity(i);
+			startActivityForResult(i, REQUEST_CODE);
+			letraingr.setText("");
+			score1.setText("Score: " + puntaje);
+			//devolvemos el intent gano para retornar el nick y el score				
 		}
+
 		return;
 	}
 
