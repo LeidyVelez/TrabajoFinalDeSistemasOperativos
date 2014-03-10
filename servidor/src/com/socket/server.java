@@ -15,7 +15,7 @@ public class server {
 	Socket skCliente;
 	ServerSocket skServidor;
 	String datareceived, substring1, substring2;
-	final int PUERTO = 5556;// Puerto que utilizara el servidor utilizar este
+	final int PUERTO = 5555;// Puerto que utilizara el servidor utilizar este
 							// mismo en el cliente
 	String IP_client, IP_clientAfter;
 	Mensaje_data mdata = null;
@@ -93,7 +93,7 @@ public class server {
 			try{
 				if(IP_clientAfter.equals(IP_client)){
 				
-					System.out.println("[" + TimeStamp + "]" + " guardando/actualizando nick y score...");
+					
 					//procedemos a revisar y guardar la información que envía el cliente
 					// Manejamos flujo de Entrada
 					ObjectInputStream ois = new ObjectInputStream(skCliente.getInputStream());
@@ -103,6 +103,12 @@ public class server {
 					if (aux instanceof Mensaje_data){
 					
 						mdata = (Mensaje_data) aux;
+						if(mdata.tags.equalsIgnoreCase("perdio")){
+							ois.close();
+							skCliente.close();
+							continue;
+						}
+						System.out.println("[" + TimeStamp + "]" + " guardando/actualizando nick y score...");
 						guardarInfoJugador(mdata.tags, mdata.texto);				
 	            	}
 					//	cerramos la conexión
@@ -174,6 +180,8 @@ public class server {
 		msgJugador.last_msg = false;
 		return msgJugador;
 	}
+	
+	
 	
 	public void Snd_txt_Msg(String txt, String label) {
 
@@ -254,4 +262,4 @@ public class server {
 		new server();
 	}
 	
-}
+}	

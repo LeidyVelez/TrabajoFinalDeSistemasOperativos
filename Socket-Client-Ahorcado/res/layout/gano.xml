@@ -48,17 +48,8 @@
         android:layout_width="118dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Enviar"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/buttonRanking"
-        android:layout_width="118dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
-        android:text="Ranking"
         android:textSize="20sp" />
 
 </LinearLayout>

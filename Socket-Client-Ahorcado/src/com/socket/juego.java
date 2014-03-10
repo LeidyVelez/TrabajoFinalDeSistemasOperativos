@@ -13,13 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class juego extends Activity {
-	private Button enviar;
+	private Button enviar, ranking;
 	private TextView texto, tag, score1;
 	private EditText letraingr;
 	private ImageView img;
-	private int i=1, puntaje = 0, score=0,REQUEST_CODE = 13;
+	private int i=1, puntaje = 0, score=0, REQUEST_CODE = 13;
 	private boolean letra = true;
-	private String ejemplo, palmostrar = "", Ptag, punt, IP;
+	private String ejemplo, palmostrar = "", Ptag, punt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +28,12 @@ public class juego extends Activity {
 		Bundle reicieveParams = getIntent().getExtras();
 		ejemplo = (String) reicieveParams.getString("word");
 		Ptag = (String) reicieveParams.getString("lab");
-		IP = (String) reicieveParams.getString("ip");
 		img = (ImageView) findViewById(R.id.imgview);
 		texto = (TextView) findViewById(R.id.textView1);
 		tag = (TextView) findViewById(R.id.textView2);
 		letraingr = (EditText) findViewById(R.id.editText1);
 		enviar = (Button) findViewById(R.id.buttonenviar);
+		ranking = (Button) findViewById(R.id.buttonranking);
 		score1 = (TextView) findViewById(R.id.textViewScore1);
 		score1.setText("Score: " + puntaje);
 		// recibir datos
@@ -69,29 +69,31 @@ public class juego extends Activity {
 						Intent i = new Intent(juego.this, Perdio.class);
 						punt = Integer.toString(puntaje);
 						i.putExtra("score", punt);
-						i.putExtra("ip", IP);
-						startActivity(i);
+						startActivityForResult(i, REQUEST_CODE);
 					}
 				}
 				letraingr.setText("");
 				score1.setText("Score: " + puntaje);
 			}
 		});
-	}
-	//método para capturar los datos recibidos desde la otra actividad creada
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    // TODO Auto-generated method stub
-	    if ((requestCode == REQUEST_CODE) && (resultCode == RESULT_OK)){
-	    	
-			setResult(RESULT_OK, data);
-		    finish();
-			
-	    	//Toast.makeText(getApplicationContext(), "El nick juego es "+data.getStringExtra("nick")+ " y" +
-	        		//" su puntaje juego es "+ data.getStringExtra("score"),
-					//Toast.LENGTH_SHORT).show();
-	    }
+		
 	}
 
+	
+	//método para capturar los datos recibidos desde la otra actividad creada
+		protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		    // TODO Auto-generated method stub
+		    if ((requestCode == REQUEST_CODE) && (resultCode == RESULT_OK)){
+		    	
+				setResult(RESULT_OK, data);
+			    finish();
+				
+		    	//Toast.makeText(getApplicationContext(), "El nick juego es "+data.getStringExtra("nick")+ " y" +
+		        		//" su puntaje juego es "+ data.getStringExtra("score"),
+						//Toast.LENGTH_SHORT).show();
+		    }
+		}
+		
 	// funcion para saber si dentro de la palabra esta el caracter
 	public boolean comprobarletra(char caracter) {
 		boolean encontrado = false;
@@ -166,7 +168,6 @@ public class juego extends Activity {
 			score1.setText("Score: " + puntaje);
 			//devolvemos el intent gano para retornar el nick y el score				
 		}
-
 		return;
 	}
 
