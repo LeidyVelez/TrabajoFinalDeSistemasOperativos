@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class juego extends Activity {
 	private Button enviar;
@@ -18,7 +19,7 @@ public class juego extends Activity {
 	private ImageView img;
 	private int i=1, puntaje = 0, score=0;
 	private boolean letra = true;
-	private String ejemplo, palmostrar = "", Ptag, punt;
+	private String ejemplo, palmostrar = "", Ptag, punt, IP;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class juego extends Activity {
 		Bundle reicieveParams = getIntent().getExtras();
 		ejemplo = (String) reicieveParams.getString("word");
 		Ptag = (String) reicieveParams.getString("lab");
+		IP = (String) reicieveParams.getString("ip");
 		img = (ImageView) findViewById(R.id.imgview);
 		texto = (TextView) findViewById(R.id.textView1);
 		tag = (TextView) findViewById(R.id.textView2);
@@ -67,6 +69,7 @@ public class juego extends Activity {
 						Intent i = new Intent(juego.this, Perdio.class);
 						punt = Integer.toString(puntaje);
 						i.putExtra("score", punt);
+						i.putExtra("ip", IP);
 						startActivity(i);
 					}
 				}
@@ -138,12 +141,10 @@ public class juego extends Activity {
 		// si nunca leyo el caracter "_" la variable seguira verdadera por lo
 		// tanto gano
 		if (gano) {
-			/*setContentView(R.layout.gano);
-			score2 = (TextView) findViewById(R.id.textViewScore2);
-			score2.setText("Score: " + puntaje);*/
 			Intent i = new Intent(juego.this, Gano.class);
 			punt = Integer.toString(puntaje);
 			i.putExtra("score", punt);
+			i.putExtra("ip", IP);
 			startActivity(i);
 		}
 		return;
