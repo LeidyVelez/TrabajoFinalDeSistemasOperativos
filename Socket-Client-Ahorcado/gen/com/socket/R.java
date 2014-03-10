@@ -28,7 +28,8 @@ public final class R {
     public static final class id {
         public static final int btcnt=0x7f05000f;
         public static final int bts=0x7f050011;
-        public static final int buttonVolver=0x7f050004;
+        public static final int buttonEnviar=0x7f050004;
+        public static final int buttonVolver=0x7f050013;
         public static final int buttonenviar=0x7f050007;
         public static final int buttonranking=0x7f050008;
         public static final int conneytlay=0x7f05000e;

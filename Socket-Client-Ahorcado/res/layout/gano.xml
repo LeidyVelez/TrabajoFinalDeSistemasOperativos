@@ -44,7 +44,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/buttonVolver"
+        android:id="@+id/buttonEnviar"
         android:layout_width="118dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"

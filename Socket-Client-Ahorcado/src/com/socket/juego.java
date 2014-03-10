@@ -13,12 +13,12 @@ import android.widget.TextView;
 
 public class juego extends Activity {
 	private Button enviar;
-	private TextView texto, tag, score1, score2;
+	private TextView texto, tag, score1;
 	private EditText letraingr;
 	private ImageView img;
 	private int i=1, puntaje = 0, score=0;
 	private boolean letra = true;
-	private String ejemplo, palmostrar = "", Ptag;
+	private String ejemplo, palmostrar = "", Ptag, punt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +65,8 @@ public class juego extends Activity {
 					if (i == 8) {
 						// fin juego
 						Intent i = new Intent(juego.this, Perdio.class);
-						String enviar = Integer.toString(puntaje);
-						i.putExtra("score", enviar);
+						punt = Integer.toString(puntaje);
+						i.putExtra("score", punt);
 						startActivity(i);
 					}
 				}
@@ -138,9 +138,13 @@ public class juego extends Activity {
 		// si nunca leyo el caracter "_" la variable seguira verdadera por lo
 		// tanto gano
 		if (gano) {
-			setContentView(R.layout.gano);
+			/*setContentView(R.layout.gano);
 			score2 = (TextView) findViewById(R.id.textViewScore2);
-			score2.setText("Score: " + puntaje);
+			score2.setText("Score: " + puntaje);*/
+			Intent i = new Intent(juego.this, Gano.class);
+			punt = Integer.toString(puntaje);
+			i.putExtra("score", punt);
+			startActivity(i);
 		}
 		return;
 	}
