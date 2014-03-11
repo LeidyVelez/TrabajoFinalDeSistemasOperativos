@@ -15,7 +15,7 @@ public class server {
 	Socket skCliente;
 	ServerSocket skServidor;
 	String datareceived, substring1, substring2;
-	final int PUERTO = 5555;// Puerto que utilizara el servidor utilizar este
+	final int PUERTO = 5560;// Puerto que utilizara el servidor utilizar este
 							// mismo en el cliente
 	String IP_client, IP_clientAfter;
 	Mensaje_data mdata = null;
@@ -63,9 +63,10 @@ public class server {
                     	{
                     		//escoje una categoria y una palabra aleatoria y la manda al cliente
                     		NumPal =(int)(Math.random()*5 +1 );
-                    		NumCat =(int)(Math.random()*2 );
+                    		NumCat =(int)(Math.random()*3 );
                     		GenerarDiccionario();
                     		Snd_txt_Msg((String)Diccionario[NumCat][NumPal],(String)Diccionario[NumCat][0]);
+                    		rankingJugadores();
                     	}
                     	
                     }
@@ -103,10 +104,20 @@ public class server {
 					if (aux instanceof Mensaje_data){
 					
 						mdata = (Mensaje_data) aux;
-						if(mdata.tags.equalsIgnoreCase("perdio")){
+						//comparamos para saber si perdió y continuar
+						if(mdata.tags == null || mdata.tags.equalsIgnoreCase("perdio")){
 							ois.close();
 							skCliente.close();
 							continue;
+						}else{
+							//comparamos para saber si se hizo petición de ranking de jugadores
+							if(mdata.tags.equalsIgnoreCase("ranking")){
+								rankingJugadores();
+								System.out.println("[" + TimeStamp + "]" + " Enviando ranking de jugadores...");
+								ois.close();
+								skCliente.close();
+								continue;
+							}
 						}
 						System.out.println("[" + TimeStamp + "]" + " guardando/actualizando nick y score...");
 						guardarInfoJugador(mdata.tags, mdata.texto);				
@@ -114,7 +125,7 @@ public class server {
 					//	cerramos la conexión
 					ois.close();
 					skCliente.close();
-					System.out.println("["+ TimeStamp+ "] Datos guardados y actualizados, sigue superándote");
+					System.out.println("["+ TimeStamp+ "] Datos guardados y actualizados, sigue superándote!!!");
 				}
             }catch (EOFException e) {
 				//e.printStackTrace();
@@ -122,7 +133,7 @@ public class server {
 				return;
 			}
 			//prueba para revisar los jugadores guardados
-			mostrarJugadores();
+			ordenarRanking();
 			//fin prueba
 			}
 		} catch (Exception e) {
@@ -181,7 +192,55 @@ public class server {
 		return msgJugador;
 	}
 	
+	//enviamor un String con los primeros 10 (si los hay) mejores jugadores con sus puntajes respectivos
+	public void enviarRankingJugador(String posicion){
+		ordenarRanking();
+		Snd_txt_Msg(jugadores[Integer.parseInt(posicion)][1], jugadores[Integer.parseInt(posicion)][0]);
+	}
 	
+	public void rankingJugadores(){
+		ordenarRanking();
+		
+		String encabezado = "el top 10 de los mejores jugadores es \n";
+		int i = 0;
+		String enumeracion = "";
+		if(jugadores[0][0]!=null){ 	//si está vacío
+		do{
+			enumeracion += "\n Jugador N°"+ (i+1) + ": " + jugadores[i][0] + " puntaje: " + jugadores[i][1];
+			i++;
+		}while(i < jugadores.length && jugadores[i][0]!=null);
+		}
+		Snd_txt_Msg(enumeracion, encabezado);
+	}
+	
+	public void ordenarRanking(){
+		
+		boolean hayCambios = true;
+		for(int i = 0; i < jugadores.length && hayCambios; i++){
+			hayCambios = false;
+			for(int j = 0; j < jugadores.length-1; j++){
+				try{
+					if(Integer.parseInt(jugadores[j][1]) < Integer.parseInt(jugadores[j + 1][1])){
+						intercambia(j, j+1);
+						hayCambios = true;
+					}
+				}catch(NumberFormatException e){
+					break;
+				}
+			}
+		}
+		mostrarJugadores();
+	}
+	
+	public void intercambia(int i, int j){
+		String nickTemp, scoreTemp;
+		nickTemp = jugadores[i][0];
+		scoreTemp = jugadores[i][1];
+		jugadores[i][0] = jugadores[j][0];
+		jugadores[i][1] = jugadores[j][1];
+		jugadores[j][0] = nickTemp;
+		jugadores[j][1] = scoreTemp;
+	}
 	
 	public void Snd_txt_Msg(String txt, String label) {
 

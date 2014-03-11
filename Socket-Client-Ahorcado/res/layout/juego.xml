@@ -52,13 +52,5 @@
         android:layout_marginLeft="135dp"
         android:layout_marginTop="20dp"
         android:text="Enviar" />
-    
-    <Button
-        android:id="@+id/buttonranking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="0dp"
-        android:text="Ranking" />
 
 </LinearLayout>

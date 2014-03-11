@@ -13,13 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class juego extends Activity {
-	private Button enviar, ranking;
+	private Button enviar;//, ranking;
 	private TextView texto, tag, score1;
 	private EditText letraingr;
 	private ImageView img;
 	private int i=1, puntaje = 0, score=0, REQUEST_CODE = 13;
 	private boolean letra = true;
 	private String ejemplo, palmostrar = "", Ptag, punt;
+	private String ranking;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,13 @@ public class juego extends Activity {
 		Bundle reicieveParams = getIntent().getExtras();
 		ejemplo = (String) reicieveParams.getString("word");
 		Ptag = (String) reicieveParams.getString("lab");
+		ranking = (String) reicieveParams.getString("ranking");
 		img = (ImageView) findViewById(R.id.imgview);
 		texto = (TextView) findViewById(R.id.textView1);
 		tag = (TextView) findViewById(R.id.textView2);
 		letraingr = (EditText) findViewById(R.id.editText1);
 		enviar = (Button) findViewById(R.id.buttonenviar);
-		ranking = (Button) findViewById(R.id.buttonranking);
+		//ranking = (Button) findViewById(R.id.buttonranking);
 		score1 = (TextView) findViewById(R.id.textViewScore1);
 		score1.setText("Score: " + puntaje);
 		// recibir datos
@@ -76,6 +78,8 @@ public class juego extends Activity {
 				score1.setText("Score: " + puntaje);
 			}
 		});
+		
+		
 		
 	}
 
@@ -163,6 +167,7 @@ public class juego extends Activity {
 			Intent i = new Intent(juego.this, Gano.class);
 			punt = Integer.toString(puntaje);
 			i.putExtra("score", punt);
+			i.putExtra("ranking", ranking);
 			startActivityForResult(i, REQUEST_CODE);
 			letraingr.setText("");
 			score1.setText("Score: " + puntaje);

@@ -65,14 +65,16 @@ public class Sockettest extends Activity {
 			
 			Snd_txt_Msg("hola");
 
-              
+			ObjectInputStream ois;
+			Object aux;
+			
 			try{
 
 				// Manejamos flujo de Entrada
-				ObjectInputStream ois = new ObjectInputStream(
+				 ois = new ObjectInputStream(
 						miCliente.getInputStream());
 				// Cremos un Objeto con lo recibido del cliente
-				Object aux = ois.readObject();// leemos objeto
+				 aux = ois.readObject();// leemos objeto
                 
 				if (aux instanceof Mensaje_data)
                 {
@@ -85,10 +87,23 @@ public class Sockettest extends Activity {
 			}
 			catch(Exception exc){}
 			
-			
 			Intent i = new Intent(Sockettest.this, juego.class );
 	        i.putExtra("word", palabra);
 	        i.putExtra("lab", labels);
+	        //agregamos el ranking si es que lo hay
+	        Mensaje_data infoRanking = new Mensaje_data();	        
+	        infoRanking.tags = "ranking";
+	        Snd_Msg(infoRanking);	//mandamos la solicitud de ranking
+	        try{
+	        	ois = new ObjectInputStream(
+	        			miCliente.getInputStream());
+	        	// Cremos un Objeto con lo recibido del cliente
+	        	aux = ois.readObject();
+	        	mdata = (Mensaje_data) aux;
+	        	i.putExtra("ranking", mdata.texto);
+	        	/*Toast.makeText(getApplicationContext(),"texto ranking" + mdata.texto ,
+						Toast.LENGTH_SHORT).show();*/
+	        }catch(Exception e){}
 	        startActivityForResult(i, Request_code);
 		} else {//error al conectarse 
 			Toast.makeText(getApplicationContext(), "No se ha podido establecer conexión",
@@ -134,7 +149,7 @@ public class Sockettest extends Activity {
 	public boolean Connect() {
 		//Obtengo datos ingresados en campos
 		String IP = ipinput.getText().toString();
-		int PORT = 5555;
+		int PORT = 5560;
 
 		try {//creamos sockets con los valores anteriores
 			miCliente = new Socket(IP, PORT);
@@ -183,7 +198,7 @@ public class Sockettest extends Activity {
 	}
 	*/
 
-	//Enviamos mensaje de accion segun el boton q presionamos
+	/*//Enviamos mensaje de accion segun el boton q presionamos
 	public void Snd_Action(int bt) {
 		Mensaje_data msgact = new Mensaje_data();
 		//no hay texto
@@ -201,7 +216,7 @@ public class Sockettest extends Activity {
 
 		}
 		
-	}
+	}*/
 
 	//Envio mensaje de texto 
 	public void Snd_txt_Msg(String txt) {
